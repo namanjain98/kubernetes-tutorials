@@ -1,0 +1,21 @@
+kubernetes create its own namespace automatically named as  default namespace
+kubernetes create some pods services by default while creating the cluster under kube-system namespace
+the resources which should be made avialable to pub are created under kube-public namespace
+
+a resources in one NS can be connected with resources to other namespace also
+mysql.connect("db-service") :- same namespace
+mysql.connect("db-service.dev.svc.cluster.local") :- same namespace
+
+kubectl create -f pod.yaml --namespace=dev
+
+We can also put namespace in metadatasection
+
+metadata:
+    name: myapp
+    namespace: dev
+
+command to create namespaces:
+    kubectl create namespace dev
+
+Switch to the other namespace:
+kubectl config set-context $(kubectl config current-context) --namespace=prod

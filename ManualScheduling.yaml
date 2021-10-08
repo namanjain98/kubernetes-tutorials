@@ -1,0 +1,17 @@
+#Bydefault a pod is assigned to a node by the scheduler by giving the nidename property to it but if we manually want to 
+#assign a pod to the node than we need to give the pod the nodename property
+#kubectl -n kube-system get pods to see if scheduler pod is present
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx1
+  labels:
+    name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 8080
+  nodeName: ip-10-0-1-75.ec2.internal

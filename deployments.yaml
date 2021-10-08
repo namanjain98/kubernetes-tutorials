@@ -1,0 +1,46 @@
+# upgrade one after the other
+# rollback the changes
+#apply pause to the env and apply the changes
+#rolling  update
+#pause and resume changes 
+#undo changes
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    app: deployment-label
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+
+ 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-frontend
+spec:
+  template:
+    metadata:
+      labels:
+        name: httpd-frontend
+    spec:
+      containers:
+      - name: httpd-frontend
+        image: httpd:2.4-alpine
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend

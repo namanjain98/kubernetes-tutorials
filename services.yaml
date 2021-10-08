@@ -1,0 +1,25 @@
+#communication bw external datasource to pods
+#communication bw pods
+#communication bw pods to external users
+# three types: nodeport, clusterIP,loadbalancer
+#node port range 30000
+
+#Nodeport:
+
+#in any case weather it be a sinlg pod on single node, multiple pod on single node or multiple pod on multiple node
+#service acts in a same way no need for extra configuration 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+ type: NodePort
+ ports:
+  - targetPort: 8080
+    port: 80
+    nodePort: 30080
+ selector:
+    app: simple-webapp
+
+

@@ -1,0 +1,8 @@
+we can create as many labels as we want 
+to select the pod with labels
+    kubectl get pods --selector app=App1
+labels and selector are use to connect different objects
+
+Annotations:-
+    Use to record other details for infomatry purpose
+        Ex: phone no,email-id,build number etc
