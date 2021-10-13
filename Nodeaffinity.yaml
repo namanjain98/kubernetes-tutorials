@@ -1,0 +1,22 @@
+#Node affinity places the pods in the particular node 
+#Two types of affinity rles present
+#requiredDuringSchedulingPreferredDuringExecution
+#preferredDuringSchedulingIgnoredDuringExecution
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: affinity
+  labels:
+    apps: my-app
+spec:
+  containers:
+  - name: data-processor
+    image: data-processor
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingPreferredDuringExecution:
+        nodeSelectors:
+        - matchExpressions:
+          - key: size
+            operator: Exists

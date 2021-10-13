@@ -1,0 +1,36 @@
+#A pod can take any number of resources it want in the node
+#to limit the resources
+#If this limit is not enough than node will throttle the pod
+#A pod cannot use more CPU than its limit however it can take more memory but it do so the pod is terminated after sometime
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp-color
+  labels:
+    name: simple-webapp-color
+spec:
+  containers:
+  - name: simple-webapp-color
+    image: simple-webapp-color
+    ports:
+     - containerPort: 8080
+     resources:
+      requests:
+        memory: "1Gi"
+        cpu: 1
+      limits:
+        memory: "2Gi"
+        cpu: 2
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+    name: cpu-limit-range
+ spec:
+  limits:
+  - default:  
+      cpu: 1
+    defaultRequest:
+        cpu: 0.5
+    type: Container   
