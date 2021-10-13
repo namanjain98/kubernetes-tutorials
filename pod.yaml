@@ -9,3 +9,16 @@ spec:
   - name: nginx-container
     image: nginx
     
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yellow
+spec:
+  containers:
+  - name: lemon
+    image: busybox
+    commands:
+      - "sleep"
+      - 1000
+  - name: gold
+    image: redis    

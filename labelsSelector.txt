@@ -6,3 +6,6 @@ labels and selector are use to connect different objects
 Annotations:-
     Use to record other details for infomatry purpose
         Ex: phone no,email-id,build number etc
+
+To execute the command inside the pod 
+kubectl -n elastic-stack exec -it app -- cat /log/app.log
