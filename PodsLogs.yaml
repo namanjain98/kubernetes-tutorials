@@ -1,0 +1,13 @@
+#kubectl logs -f event-simulator-pod event-simulator(name of container)
+#kubectl logs pod-name 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: event-simulator-pod
+spec:
+  containers:
+  - name: event-simulator
+    image: abc
+  - name: def
+    image: def

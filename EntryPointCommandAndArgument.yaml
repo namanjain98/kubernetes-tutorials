@@ -1,0 +1,45 @@
+#for docker file
+#from ubuntu
+#ENTRYPOINT ["sleep"]
+#CMD ["5"]
+#docker run ubuntu-sleeper
+#docker run ubuntu-sleeper 10
+
+# For changing the same default value of 5 to 10 in pod-defination file
+#For changing the entrypoint 
+#docker run --name ubuntu-sleeer --entrypoint sleep2.0 ubuntu-sleeper 10
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+spec:
+  containers:
+  - name: ubuntu-sleeper
+    image: ubuntu-sleeper
+    args: ["10"]
+# with the args option we can overwrite the CMD in Dockerfile
+#for changing the entrypoint in file 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+spec:
+  containers:
+  - name: ubuntu-sleeper
+    image: ubuntu-sleeper
+    command: ["sleep2.0"]
+    args: ["10"]
+
+#Create a pod with the ubuntu image to run a container to sleep for 5000 seconds. Modify the file ubuntu-sleeper-2.yaml.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper-2
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    command:
+    - "sleep"
+    - "5000"
